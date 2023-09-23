@@ -29,14 +29,14 @@ st.markdown("""
 """)
 
 
-#Cargar el dataframe de los barrios
+#Load the dataframe of the neighborhoods
 @st.cache_data
 def load_data():
     return pd.read_csv("/content/drive/MyDrive/MDS_Final-Project _Leo/00_Data-sets/df_Barrios_produccion.csv")
 
 df = load_data()
 
-#Crear la lista de barrios para invocarla en el widget input de barrios más adelante
+#Create the list of neighborhoods to invoke it in the neighborhoods input widget later on
 barrios_list = df["LOCATIONNAME"].tolist()
 
 
@@ -192,7 +192,7 @@ if st.sidebar.button("Predict"):
     st.dataframe(input_df)
 
 
-    #Display de map and location of the property
+    #Display the map and location of the property
 
     geolocator = Nominatim(user_agent="GTA Lookup")
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
